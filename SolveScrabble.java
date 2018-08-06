@@ -34,7 +34,9 @@ public class SolveScrabble {
         }
         System.out.println("without wildcard " + ans);
 
-        System.out.print("with wildcard " + wildcardScrabble(game));
+        System.out.println("with wildcard " + wildcardScrabble(game));
+
+        System.out.println("with fixed " +  fixed_letter(game,"DO",0,'G'));
 
 
     }
@@ -61,5 +63,25 @@ public class SolveScrabble {
         }
         return ans;
     }
+    static String fixed_letter(Scrabble game, String word, int pos, char i){
+
+        int MaxScore = Integer.MIN_VALUE;
+        String ans = "";
+
+        for(String temp : scrab.st){
+            if (temp.length()<pos-1){
+                continue;
+            }
+            if(game.checkValidityPos(sortRev(temp+i), pos, i)!=null){
+                if(MaxScore<score(temp+i)){
+                    MaxScore=score(temp+i);
+                    ans = game.checkValidityPos(sortRev(temp+i), pos, i);
+                }
+            }
+        }
+        return ans;
+    }
+
+
 
 }
