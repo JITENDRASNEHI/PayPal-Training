@@ -1,3 +1,5 @@
+package PayPalTraining;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Arrays;
@@ -23,6 +25,6 @@ public class Scrabble {
     String checkValidity(String key){
 
         if(dictionary.containsKey(key)){return dictionary.get(key);}
-        return "not found";
+        return null;
     }
 }
